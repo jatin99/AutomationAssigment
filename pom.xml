@@ -5,88 +5,102 @@
 	<groupId>PhoenixAutomationFramework-April</groupId>
 	<artifactId>PhoenixAutomationFramework-April</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	 <build>
-        <plugins>
-            <!-- Maven Surefire Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M9</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                      <systemPropertyVariables>
-                        <browser>${browser}</browser>
-                    </systemPropertyVariables>
-                    <parallel>tests</parallel>
-                    <threadCount>3</threadCount>
-                    <testFailureIgnore>false</testFailureIgnore>
-                </configuration>
-            </plugin>
-        </plugins>
-	 </build>
-	 <profiles>
-       
-        <profile>
-            <id>chrome</id>
-            <properties>
-                <browser>chrome</browser>
-            </properties>
-            <activation>
-            <activeByDefault>true</activeByDefault> 
-        </activation>
-        </profile>
 
-        
-        <profile>
-            <id>firefox</id>
-            <properties>
-                <browser>firefox</browser>
-            </properties>
-        </profile>
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source> 
+		<maven.compiler.target>11</maven.compiler.target> 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+	</properties>
 
-     
-        <profile>
-            <id>cli</id>
-            <properties>
-                <browser>cli</browser>
-            </properties>
-        </profile>
-    </profiles>
+	<build>
+		<plugins>
+			<!-- Maven Compiler Plugin to set the Java version -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version> <!-- Latest stable version of the compiler plugin -->
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+
+			<!-- Maven Surefire Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M9</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<systemPropertyVariables>
+						<browser>${browser}</browser>
+					</systemPropertyVariables>
+					<parallel>tests</parallel>
+					<threadCount>3</threadCount>
+					<testFailureIgnore>false</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+
+		<profile>
+			<id>chrome</id>
+			<properties>
+				<browser>chrome</browser>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<browser>firefox</browser>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>cli</id>
+			<properties>
+				<browser>cli</browser>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
-		
-		
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.14.2</version>
 			<scope>test</scope>
 		</dependency>
-		
-	
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+
+		<!-- Apache POI for Excel handling -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.4</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+
+		<!-- ExtentReports for reporting -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.1.1</version>
 		</dependency>
-		
-		<!--
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
+		<!-- Selenium Java for WebDriver -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.25.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
 
 	</dependencies>
 </project>
