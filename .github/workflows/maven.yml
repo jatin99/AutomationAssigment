@@ -32,4 +32,4 @@ jobs:
       
       with:
         name: Reports
-        path: reports/
+        path: report/
