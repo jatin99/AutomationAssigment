@@ -1,0 +1,22 @@
+<suite name="AutomationSuite" parallel="tests" thread-count="3">
+
+	<listeners>
+		<!-- Add your listener class here -->
+		<listener class-name="com.listeners.MyTestListener" />
+	</listeners>
+	<test name="LoginTests">
+		<classes>
+			<class name="com.ui.tests.LoginTest" />
+		</classes>
+	</test>
+	<test name="InvalidCredsLoginTest">
+		<classes>
+			<class name="com.ui.tests.InvalidCredsLoginTest" />
+		</classes>
+	</test>
+	<test name="ProductTests">
+		<classes>
+			<class name="com.ui.tests.ProductSearchingTest" />
+		</classes>
+	</test>
+</suite>
